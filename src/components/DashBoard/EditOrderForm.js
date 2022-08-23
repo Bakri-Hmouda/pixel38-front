@@ -14,28 +14,28 @@ import {
 
 const validationSchema = yup.object({
     costumerName: yup
-        .string('Enter a title')
+        .string('Enter a costumer name')
         .required('Costumer name is required')
 
     ,
     costumerAddress: yup
-        .string('Enter post body')
+        .string('Enter costumer address ')
         .required('Costumer Address required')
     ,
     costumerPhoneNumber: yup
-        .string('Enter an action button title')
+        .string('Enter a costumer phone number')
         .required('Costumer phone number is required')
     ,
     originAddress: yup
-        .string('Enter action button link')
+        .string('Enter an origin address')
         .required('Source address is required')
     ,
     destinationAddress: yup
-        .string('Enter a banner image')
+        .string('Enter a destination address')
         .required('Destination address is required')
     ,
     charge: yup
-        .string('Enter images for the post')
+        .string('Enter service charge')
         .required('Charge is required')
 
 });
