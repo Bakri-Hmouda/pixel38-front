@@ -35,7 +35,7 @@ const validationSchema = yup.object({
         .required('Destination address is required')
     ,
     charge: yup
-        .array('Enter images for the post')
+        .string('Enter images for the post')
         .required('Charge is required')
 
 });
@@ -57,26 +57,25 @@ const Field = ({param, label, formik})=>{
 
 }
 
-const EditOrderForm = ({open, close, addBlog}) => {
+const EditOrderForm = ({open, close, data}) => {
 
 
 
     const formik = useFormik({
         initialValues: {
-            costumerName: '',
-            costumerAddress: '',
-            costumerPhoneNumber: '',
-            originAddress: '',
-            destinationAddress: '',
-            charge: '',
+            costumerName: data.costumerName ||'',
+            costumerAddress: data.costumerAddress || '',
+            costumerPhoneNumber: data.costumerPhoneNumber || '',
+            originAddress: data.originAddress || '',
+            destinationAddress: data.destinationAddress || '',
+            charge: data.charge || '',
         },
         validationSchema: validationSchema,
-        validateOnChange: true
+        validateOnChange: true,
+        enableReinitialize:true
         ,
         onSubmit: async (values) => {
             console.log(JSON.stringify(values))
-            const response = await addBlog(values)
-            if (response.status === 200) formik.resetForm()
         },
     });
     const handleClose = () => {
@@ -86,7 +85,7 @@ const EditOrderForm = ({open, close, addBlog}) => {
     return (
         <Dialog fullScreen open={open} onClose={close}>
             <DialogTitle>
-                Create a new shipment order
+                Edit shipment order
             </DialogTitle>
             <DialogContent>
                 <form id={'newBlogPost'} onSubmit={formik.handleSubmit}>

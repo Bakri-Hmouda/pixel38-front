@@ -35,7 +35,7 @@ const validationSchema = yup.object({
         .required('Destination address is required')
     ,
     charge: yup
-        .array('Enter images for the post')
+        .string('Enter images for the post')
         .required('Charge is required')
 
 });
