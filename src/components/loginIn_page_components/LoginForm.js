@@ -1,24 +1,34 @@
-import {Paper, Stack, TextField} from "@mui/material";
+import {Button, Paper, Stack, TextField, Typography, useMediaQuery, useTheme} from "@mui/material";
 
-export default function LoginForm () {
-    return <form>
-        <Paper sx={{p:10, width:'50%', }}>
-            <Stack>
+export default function LoginForm() {
+
+    const theme = useTheme()
+    const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        alert('login')
+    }
+
+    return <Paper sx={{flex: 0.5, p: 5, minWidth: isMobileView ? '100%' : '40%',}}>
+        <form id={'login-form'} onSubmit={handleSubmit}>
+            <Stack gap={2}>
+                <Typography variant={'h4'} gutterBottom> LOGIN</Typography>
                 <TextField
                     label={'username'}
                     type={'text'}
                     autoComplete={'username'}
-                    margin={'normal'}
                 />
 
                 <TextField
                     label={'password'}
                     type={'password'}
                     autoComplete={'password'}
-                    margin={'normal'}
                 />
 
+                <Button size={'large'} type={'submit'} variant={'contained'}>Login</Button>
+
             </Stack>
-        </Paper>
-    </form>
+        </form>
+    </Paper>
 }
