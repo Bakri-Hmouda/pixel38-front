@@ -1,12 +1,19 @@
 import {Box, Container, Typography, useMediaQuery, useTheme} from "@mui/material";
 import LoginForm from "../components/loginIn_page_components/LoginForm";
-
+import {useContext} from "react";
+import {userStateContext} from "../services/userStateProvider";
+import {Navigate} from "react-router-dom";
 
 export default function LoginPage() {
 
 
     const theme = useTheme()
     const isMobileView = useMediaQuery(theme.breakpoints.down("md"))
+
+    const userState = useContext(userStateContext)
+    const {state} = userState
+
+    if(state.isLogin) return <Navigate to={'/dashboard'} replace/>
 
     return <Container
         name={'main'}
