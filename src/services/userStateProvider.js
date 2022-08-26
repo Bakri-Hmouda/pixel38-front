@@ -7,7 +7,7 @@ export const userStateContext = createContext()
 const getToken = () => localStorage.getItem('token')
 
 const initialUserState = {
-    isLogin: true,
+    isLogin: false,
 }
 
 const reducer = (state, action) => {
